@@ -1,29 +1,67 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="content" >
+      <transition :name="transitionName">
+        <router-view class="child-view" ></router-view>
+      </transition>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+// import Header from '@/components/Header.vue'; 
+
+// @Component({
+//   components: {
+//     Header,
+//   },
+// })
+export default class App extends Vue {
+  @Prop()
+  private transitionName: string = 'slide-left';
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
+</script>
+
+<style lang="scss">
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  }
+
+  .slide-left-enter-active {
+    animation: slideLeft .3s;
+  }
+  .slide-right-enter-active {
+    animation: slideRight .3s;
+  }
+  .fold-enter-active, .fold-leave-active {
+    transition: transform .3s ease-in;
+  }
+  .fold-enter, .fold-leave-active {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  @keyframes slideLeft {
+    from {
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
     }
   }
-}
+
+  @keyframes slideRight {
+    from {
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 </style>
