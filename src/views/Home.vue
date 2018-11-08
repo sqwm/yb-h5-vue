@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Header msg="你真帅啊！"/>
+    首页
   </div>
 </template>
 
@@ -15,3 +15,11 @@ import Header from '@/components/Header.vue';
 })
 export default class Home extends Vue {}
 </script>
+
+<style lang="scss">
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

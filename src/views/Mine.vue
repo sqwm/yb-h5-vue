@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Header msg="你真帅啊！"/>
+
   </div>
 </template>
 
