@@ -42,7 +42,7 @@ export default class App extends Vue {
 
   @Watch('$route')
   private on$RouteChanged(to: object, from: object) {
-    if (!this.loginStatus) {
+    if (!this.loginStatus && to.name !=='register') {
       this.$router.replace({ name: 'login' });
     }
     const toLevel = Number(to.meta.level);
