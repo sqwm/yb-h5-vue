@@ -1,12 +1,13 @@
 import 'amfe-flexible';
 import Vue from 'vue';
-import './cube-ui.ts';
+import Cube from 'cube-ui';
 
 import App from '@/App.vue';
 import router from '@/router';
 import store from '@/store';
 import '@/registerServiceWorker';
 
+Vue.use(Cube);
 Vue.config.productionTip = false;
 
 new Vue({
