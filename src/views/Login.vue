@@ -44,7 +44,7 @@ export default class Login extends Vue {
         const fomatToken = `Bearer ${res.data.data.token}`;
         this.setToken(fomatToken);
         this.setUserInfo(res.data.data.userInfo);
-        this.$router.push({ name: 'home' });
+        this.$router.replace({ name: 'home' });
       }
     });
   }
