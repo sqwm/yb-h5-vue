@@ -6,6 +6,7 @@
         <router-view class="child-view" ></router-view>
       </transition>
     </div>
+    <tab v-if="isShowTabbar" :tabNames="tabNames"></tab>
   </div>
 </template>
 
@@ -13,10 +14,17 @@
 import { State, Action } from 'vuex-class';
 import { Component, Prop, Provide, Watch, Vue } from 'vue-property-decorator';
 import ComHeader from '@/components/Header.vue'; 
+import Tab from '@/components/Tab.vue'; 
+
+import homeIcon from '@/../public/img/tabs/tabbar_home_normal@2x.png';
+import homeIconActive from '@/../public/img/tabs/tabbar_home_selected@2x.png';
+import mineIcon from '@/../public/img/tabs/tabbar_my_normal@2x.png';
+import mineIconActive from '@/../public/img/tabs/tabbar_my_selected@2x.png';
 
 @Component({
   components: {
     ComHeader,
+    Tab,
   },
 })
 export default class App extends Vue {
@@ -24,6 +32,10 @@ export default class App extends Vue {
   @Action('setCurrentPageTitle') private setCurrentPageTitle: any;
 
   @Provide() private transitionName: string = 'slide-left';
+  @Provide() private tabNames: Array = [
+    { name: '首页', icon: homeIcon, iconActive: homeIconActive, url: '/home' },
+    { name: '我的', icon: mineIcon, iconActive: mineIconActive, url: '/mine' },
+  ];
 
   @Watch('$route')
   private on$RouteChanged(to: object, from: object) {
@@ -37,6 +49,10 @@ export default class App extends Vue {
 
   get isShowBack() {
     return this.$route.meta.level > 1;
+  }
+
+  get isShowTabbar() {
+    return this.$route.meta.isTab;
   }
 
   private setRouteTransiton(toLevel: number, fromLevel: number) {

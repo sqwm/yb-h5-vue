@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-
+  <div class="mine">
+    我的
   </div>
 </template>
 
@@ -13,5 +13,13 @@ import Header from '@/components/Header.vue';
     Header,
   },
 })
-export default class Home extends Vue {}
+export default class Mine extends Vue {}
 </script>
+
+<style lang="scss">
+.mine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

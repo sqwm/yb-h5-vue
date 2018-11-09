@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="register">
 
   </div>
 </template>
@@ -13,5 +13,5 @@ import Header from '@/components/Header.vue';
     Header,
   },
 })
-export default class Home extends Vue {}
+export default class Register extends Vue {}
 </script>
