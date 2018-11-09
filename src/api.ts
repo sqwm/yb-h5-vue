@@ -5,7 +5,7 @@ export default {
     return api.get('/api/base/options');
   },
   register(params: object) {
-    return api.post('/api/user/addparent', params);
+    return api.post('/api/user/register', params);
   },
   login(params: object) { 
     return api.post('/api/user/login', params);
