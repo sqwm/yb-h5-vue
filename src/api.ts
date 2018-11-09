@@ -16,4 +16,7 @@ export default {
   updateUser(id: number, params: object) {
     return api.put(`/api/user/${id}`, params);
   },
+  uploadPhoto(params: object) {
+    return api.post('/api/base/upload', params);
+  },
 };
