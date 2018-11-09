@@ -15,6 +15,7 @@ import { State, Action } from 'vuex-class';
 import { Component, Prop, Provide, Watch, Vue } from 'vue-property-decorator';
 import ComHeader from '@/components/Header.vue'; 
 import Tab from '@/components/Tab.vue'; 
+import api from '@/api';
 
 import homeIcon from '@/../public/img/tabs/tabbar_home_normal@2x.png';
 import homeIconActive from '@/../public/img/tabs/tabbar_home_selected@2x.png';
@@ -33,6 +34,7 @@ export default class App extends Vue {
   @State('loginStatus') private loginStatus!: string;
   @Action('setCurrentPageTitle') private setCurrentPageTitle: any;
   @Action('setShowApiToast') private setShowApiToast: any;
+  @Action('setOptions') private setOptions: any;
 
   @Provide() private transitionName: string = 'slide-left';
   @Provide() private tabNames: Array = [
@@ -57,6 +59,12 @@ export default class App extends Vue {
       this.$createToast({ mask: true, time: 1000, txt: value }).show();
     }
     this.setShowApiToast('');
+  }
+
+  private created() {
+    api.getOptions().then((res) => {
+      this.setOptions(res.data.data);
+    });
   }
 
   get isShowBack() {

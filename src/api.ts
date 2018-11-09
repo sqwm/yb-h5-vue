@@ -13,4 +13,7 @@ export default {
   updatePassword(id: number, params: object) {
     return api.put(`/api/user/${id}/password`, params);
   },
+  updateUser(id: number, params: object) {
+    return api.put(`/api/user/${id}`, params);
+  },
 };

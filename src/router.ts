@@ -5,6 +5,7 @@ const Home = () => import('@/views/Home.vue');
 const Mine = () => import('@/views/Mine.vue');
 const Register = () => import('@/views/Register.vue');
 const Login = () => import('@/views/Login.vue');
+const UserDetail = () => import('@/views/UserDetail');
 
 Vue.use(Router);
 
@@ -39,6 +40,12 @@ export default new Router({
       name: 'login',
       component: Login,
       meta: { level: 1, title: '登录' },
-    }
+    },
+    {
+      path: '/userDetail',
+      name: 'userDetail',
+      component: UserDetail,
+      meta: { level: 3, title: '个人信息' },
+    },
   ],
 });

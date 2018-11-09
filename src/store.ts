@@ -7,11 +7,13 @@ const SET_SHOW_API_TOAST = 'SET_SHOW_API_TOAST';
 const SET_USER_INFO = 'SET_USER_INFO';
 const SET_TOKEN = 'SET_TOKEN';
 const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
+const SET_OPTIONS = 'SET_OPTIONS';
 
 export default new Vuex.Store({
   state: {
     currentPageTitle: '',
     apiToastMsg: '',
+    options: null,
     loginStatus: JSON.parse(localStorage.getItem('loginStatus')) || false,
     // 用户登录信息
     token: JSON.parse(localStorage.getItem('token')) || '',
@@ -32,6 +34,9 @@ export default new Vuex.Store({
     },
     [SET_LOGIN_STATUS](s, status) {
       s.loginStatus = status;
+    },
+    [SET_OPTIONS](st, options) {
+      st.options = options;
     },
   },
   actions: {
@@ -57,6 +62,9 @@ export default new Vuex.Store({
       localStorage.removeItem('userInfo');
       commit(SET_LOGIN_STATUS, false);
       commit(SET_TOKEN, {});
+    },
+    setOptions({ commit }, options) {
+      commit(SET_OPTIONS, options);
     },
   },
 });
