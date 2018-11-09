@@ -27,6 +27,7 @@ export default class Home extends Vue {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
 
     .slide-wrap {
       height: 42%;
