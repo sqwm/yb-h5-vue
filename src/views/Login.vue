@@ -12,10 +12,11 @@
 </template>
 
 <script lang="ts">
+import { Action } from 'vuex-class';
 import { Component, Provide, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue'; 
 
-// import api from '@/api';
+import api from '@/api';
 
 @Component({
   components: {
@@ -23,6 +24,8 @@ import Header from '@/components/Header.vue';
   },
 })
 export default class Login extends Vue {
+  @Action('setToken') private setToken: any;
+  @Action('setUserInfo') private setUserInfo: any;
   @Provide() private mobile: string = '';
   @Provide() private password: string = '';
 
@@ -36,12 +39,14 @@ export default class Login extends Vue {
       return;
     }
     const params = { mobile: this.mobile, password: this.password };
-    // api.login(params).then((res) => {
-    //   const fomatToken = `Bearer ${res.data.data.token}`;
-    //   this.setToken(fomatToken);
-    //   this.setUserInfo(res.data.data.userInfo);
-    //   this.$router.push({ name: 'home' });
-    // });
+    api.login(params).then((res) => {
+      if (res.data.code === 0) {
+        const fomatToken = `Bearer ${res.data.data.token}`;
+        this.setToken(fomatToken);
+        this.setUserInfo(res.data.data.userInfo);
+        this.$router.push({ name: 'home' });
+      }
+    });
   }
 
   private goRegister() {

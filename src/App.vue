@@ -29,7 +29,10 @@ import mineIconActive from '@/../public/img/tabs/tabbar_my_selected@2x.png';
 })
 export default class App extends Vue {
   @State('currentPageTitle') private currentPageTitle!: string;
+  @State('apiToastMsg') private apiToastMsg!: string;
+  @State('loginStatus') private loginStatus!: string;
   @Action('setCurrentPageTitle') private setCurrentPageTitle: any;
+  @Action('setShowApiToast') private setShowApiToast: any;
 
   @Provide() private transitionName: string = 'slide-left';
   @Provide() private tabNames: Array = [
@@ -39,12 +42,21 @@ export default class App extends Vue {
 
   @Watch('$route')
   private on$RouteChanged(to: object, from: object) {
+    if (!this.loginStatus) {
+      this.$router.replace({ name: 'login' });
+    }
     const toLevel = Number(to.meta.level);
     const fromLevel = Number(from.meta.level);
     const toTitle = to.meta.title;
-
     this.setCurrentPageTitle(toTitle);
     this.setRouteTransiton(toLevel, fromLevel); // 设置路由跳转的动画
+  }
+  @Watch('apiToastMsg')
+  private onApiToastMsg(value: string) {
+    if (value) {
+      this.$createToast({ mask: true, time: 1000, txt: value }).show();
+    }
+    this.setShowApiToast('');
   }
 
   get isShowBack() {
