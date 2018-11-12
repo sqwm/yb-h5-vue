@@ -23,7 +23,7 @@ export default class Register extends Vue {
   @Action('setToken') private setToken: any;
   @Action('setUserInfo') private setUserInfo: any;
 
-  @Provide() private formConfigs: Array = [
+  @Provide() private formConfigs: any[] = [
     { itemName: 'name', type: 'text', leftText: '昵称', rightValue: '', placeholder: '请输入' },
     { itemName: 'realname', type: 'text', leftText: '真实姓名', rightValue: '', placeholder: '请输入' },
     { itemName: 'mobile', type: 'text', leftText: '登录手机', rightValue: '', placeholder: '请输入' },

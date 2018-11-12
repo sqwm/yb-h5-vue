@@ -7,7 +7,7 @@ export default {
   register(params: object) {
     return api.post('/api/user/register', params);
   },
-  login(params: object) { 
+  login(params: object) {
     return api.post('/api/user/login', params);
   },
   updatePassword(id: number, params: object) {

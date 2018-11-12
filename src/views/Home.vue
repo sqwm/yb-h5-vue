@@ -3,7 +3,7 @@
     <cube-slide ref="slide" :data="items" class="slide-wrap">
       <cube-slide-item v-for="(item, index) in items" :key="index">
         <a>
-          <img :src="item.image" style="width: 100%">
+          <img :src="item.image" style="width: 100%;" alt="网络请求错误！">
         </a>
       </cube-slide-item>
     </cube-slide>
@@ -15,7 +15,7 @@ import { Component, Provide, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Home extends Vue {
-  @Provide() private items: Array = [
+  @Provide() private items: any[] = [
     { url: '', image: 'http://img.yibiankeji.com/ybkj/slide01.png' },
     { url: '', image: 'http://img.yibiankeji.com/ybkj/slide02.png' },
   ];

@@ -25,7 +25,7 @@ export default class Mine extends Vue {
     profilePhoto: '', name: '用户名', mobile: '手机',
   };
 
-  @Provide() private baseConfigs: Array;
+  @Provide() private baseConfigs: any[];
 
   private created() {
     this.profileInfo = this.userInfo;
@@ -33,7 +33,7 @@ export default class Mine extends Vue {
       type: 'route',
       leftText: '修改密码',
       rightValue: 'setting',
-      onClick: () => this.goPage('update'),
+      onClick: () => this.goPage('updatePassword'),
     },
     {
       type: 'route',

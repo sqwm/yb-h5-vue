@@ -13,8 +13,8 @@
 <script lang="ts">
 import { State, Action } from 'vuex-class';
 import { Component, Prop, Provide, Watch, Vue } from 'vue-property-decorator';
-import ComHeader from '@/components/Header.vue'; 
-import Tab from '@/components/Tab.vue'; 
+import ComHeader from '@/components/Header.vue';
+import Tab from '@/components/Tab.vue';
 import api from '@/api';
 
 import homeIcon from '@/../public/img/tabs/tabbar_home_normal@2x.png';
@@ -37,14 +37,14 @@ export default class App extends Vue {
   @Action('setOptions') private setOptions: any;
 
   @Provide() private transitionName: string = 'slide-left';
-  @Provide() private tabNames: Array = [
+  @Provide() private tabNames: any[] = [
     { name: '首页', icon: homeIcon, iconActive: homeIconActive, url: '/home' },
     { name: '我的', icon: mineIcon, iconActive: mineIconActive, url: '/mine' },
   ];
 
   @Watch('$route')
   private on$RouteChanged(to: object, from: object) {
-    if (!this.loginStatus && to.name !=='register') {
+    if (!this.loginStatus && to.name !== 'register') {
       this.$router.replace({ name: 'login' });
     }
     const toLevel = Number(to.meta.level);

@@ -24,7 +24,7 @@ export default class Register extends Vue {
   @State('options') private options!: object;
   @Action('setUserInfo') private setUserInfo: any;
 
-  @Provide() private formConfigs: Array = [
+  @Provide() private formConfigs: any[] = [
     { itemName: 'profilePhoto', type: 'photo', photoName: '', leftText: '头像', rightValue: '' },
     { itemName: 'name', type: 'text', leftText: '昵称', rightValue: '' },
     { itemName: 'mobile', type: 'show', leftText: '手机', rightValue: '' },
@@ -73,7 +73,7 @@ export default class Register extends Vue {
         params.role = role;
         this.setUserInfo(params);
         this.$router.go(-1);
-      } 
+      }
     });
   }
 }

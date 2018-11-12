@@ -24,7 +24,7 @@ export default class Login extends Vue {
   @Provide() private mobile: string = '';
   @Provide() private password: string = '';
 
-  private login () {
+  private login() {
     if (!/^\d{11}$/.test(this.mobile) || !this.mobile) {
       this.toast('手机号码有误，请重填');
       return;

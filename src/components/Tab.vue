@@ -14,7 +14,7 @@ import { Prop, Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private tabNames!: Array;
+  @Prop() private tabNames!: any[];
 
   get navIndex() {
     const CurRouteArray = this.$route.path.split('/');
