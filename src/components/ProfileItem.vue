@@ -14,7 +14,7 @@ import { Component, Provide, Prop, Vue } from 'vue-property-decorator';
 import defaultProfilePhoto from '@/../public/img/defaultProfilePhoto.png';
 
 @Component
-export default class Mine extends Vue {
+export default class ProfileItem extends Vue {
   @Prop() private profileInfo!: object;
   @Provide() private defaultProfilePhoto: string = defaultProfilePhoto;
 

@@ -19,7 +19,7 @@ import api from '@/api';
     FootButton,
   },
 })
-export default class Register extends Vue {
+export default class UserDetail extends Vue {
   @State('userInfo') private userInfo!: object;
   @State('options') private options!: object;
   @Action('setUserInfo') private setUserInfo: any;

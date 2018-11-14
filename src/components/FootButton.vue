@@ -6,15 +6,10 @@
 
 <script lang="ts">
 import { Prop, Component, Vue } from 'vue-property-decorator';
-import Header from '@/components/Header.vue';
 
-@Component({
-  components: {
-    Header,
-  },
-})
-export default class Register extends Vue {
-  @Prop() private btnText!: string;
+@Component
+export default class FootButton extends Vue {
+  @Prop({ default: '提交' }) private btnText!: string;
 
   private onClick() {
     this.$emit('onClick');

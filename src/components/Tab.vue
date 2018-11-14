@@ -13,7 +13,7 @@
 import { Prop, Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HelloWorld extends Vue {
+export default class Tab extends Vue {
   @Prop() private tabNames!: any[];
 
   get navIndex() {
